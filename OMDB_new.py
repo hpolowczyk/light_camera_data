@@ -115,7 +115,7 @@ import pymongo
 # API URL
 url = "http://www.omdbapi.com/?apikey=57e34fb6&plot=full"
 # MongoDB connection
-conn = 'mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/db?retryWrites=true&w=majority'
+conn = 'mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/movie_db?retryWrites=true&w=majority'
 client = pymongo.MongoClient(conn)
 
 
@@ -243,7 +243,7 @@ movies_dict = new_df.to_dict('records')
 
 
 # Declare the collection
-collection = client.movie_db.trial
+collection = client.movie_db.merged
 
 collection.insert_many(movies_dict)
 
