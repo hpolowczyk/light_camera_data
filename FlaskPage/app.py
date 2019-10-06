@@ -18,8 +18,15 @@ mongo = PyMongo(app)
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/craigslist_app")
 
 
-@app.route("/internatianalGross")
+@app.route("/")
 def index():
+    listings = mongo.db.international_gross.find_one()
+
+    return render_template("index.html", inventory=listings)
+
+
+@app.route("/internatianalGross")
+def internatianalGross():
     listings = mongo.db.international_gross.find_one()
     result = json.loads(json_util.dumps(listings))
     return jsonify(result)
