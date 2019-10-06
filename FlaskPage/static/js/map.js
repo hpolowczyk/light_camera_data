@@ -1,5 +1,5 @@
-const url = "/internatianalGross";
-d3.json(url).then(dataInitial => {
+const url = "/map";
+data = d3.json(url).then(dataInitial => {
   data = dataInitial;
   console.log(data);
 });

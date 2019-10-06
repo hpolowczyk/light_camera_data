@@ -33,9 +33,12 @@ def internatianalGross():
 
 
 @app.route("/map")
-def test():
-    listings = mongo.db.merged.find_one()
-    return render_template("pages/test.html", listings=listings)
+def map():
+    docs = []
+    for doc in mongo.db.international_gross.find():
+        doc.pop('_id')
+        docs.append(doc)
+    return jsonify(docs)
 
 
 @app.route("/collectionBoth")
