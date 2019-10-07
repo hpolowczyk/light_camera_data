@@ -8,21 +8,18 @@ import generalFunctions
 
 app = Flask(__name__)
 
-# Use flask_pymongo to set up mongo connection
-mongodbCon = "mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/movie_db?retryWrites=true&w=majority"
-app.config["MONGO_URI"] = mongodbCon
-# app.config["MONGO_URI"] = "mongodb://localhost:27017/dbscrape_app"
-mongo = PyMongo(app)
+# # Use flask_pymongo to set up mongo connection
+# mongodbCon = "mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/movie_db?retryWrites=true&w=majority"
+# app.config["MONGO_URI"] = mongodbCon
+# # app.config["MONGO_URI"] = "mongodb://localhost:27017/dbscrape_app"
+# mongo = PyMongo(app)
+
+mongo = PyMongo(
+    app, uri="mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/movie_db?retryWrites=true&w=majority")
+
 
 # Or set inline
 # mongo = PyMongo(app, uri="mongodb://localhost:27017/craigslist_app")
-
-
-@app.route("/")
-def index():
-    listings = mongo.db.international_gross.find_one()
-
-    return render_template("index.html", inventory=listings)
 
 
 @app.route("/internatianalGross")
@@ -32,23 +29,39 @@ def internatianalGross():
     return jsonify(result)
 
 
-@app.route("/map")
-def map():
+@app.route("/")
+def init():
+    return render_template("index.html")
+
+
+@app.route("/filterLessEq_IG_Rank/<value>")
+def filterRank(value):
+    value = int(value)
     docs = []
-    for doc in mongo.db.international_gross.find():
+    for doc in mongo.db.international_gross.find({'rank': {'$lte': value}}):
         doc.pop('_id')
         docs.append(doc)
     return jsonify(docs)
 
 
-@app.route("/collectionBoth")
-def collectionBoth():
-    pass
-    # listings = mongo.db.listings
-    # listings.remove()
-    # listings_data = scrape_mars.scrape()
-    # listings.insert(listings_data)
-    # return redirect("/", code=302)
+@app.route("/filterLessEq_IG_Dom/<value>")
+def filterDomesticGross(value):
+    value = int(value)
+    docs = []
+    for doc in mongo.db.international_gross.find({'domestic_total_gross': {'$lte': value}}):
+        doc.pop('_id')
+        docs.append(doc)
+    return jsonify(docs)
+
+
+@app.route("/filterLessEq_IG_Int/<value>")
+def filterForeingGross(value):
+    value = int(value)
+    docs = []
+    for doc in mongo.db.international_gross.find({'foreign_total_gross': {'$lte': value}}):
+        doc.pop('_id')
+        docs.append(doc)
+    return jsonify(docs)
 
 
 if __name__ == "__main__":
