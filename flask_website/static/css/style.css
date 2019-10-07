@@ -23,25 +23,30 @@ body {
   width:70px;
 }
 
+.about{
+  color:#F1F0C4;
+}
+
 .windowBox{
   margin: auto;
   padding: 10px;
+  color:#F1F0C4;
+  font-size:18px
 }
 
 input#start{
   width: 50px;
   height: auto;
+  color: black
 }
 
 input#end{
   width: 50px;
   height: auto;
+  color:black
 }
 
-btn btn-default{
-  width:50px;
-  height: auto;
-}
+
 
 #about {
   margin: auto;
@@ -99,8 +104,8 @@ btn btn-default{
 /* This CSS styles the camera icon in the navbar */
 .nav-camera {
   position: absolute;
-  bottom: 7px;
-  left: 230px;
+  bottom: 16px;
+  left: 235px;
   width: 40px;
 }
 

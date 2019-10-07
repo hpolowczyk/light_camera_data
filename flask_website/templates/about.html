@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Lights! Camera! DATA!</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
   <link rel="stylesheet" href="static/css/style.css">
 </head>
@@ -30,20 +30,22 @@
     </nav>
 
     <div class="col-md-4">
-      {% for item in inventory[0:42] %}
+      {% for item in inventory[0:72] %}
         
           <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
         
       {% endfor %}
     </div>
     <div class="col-md-4">
+      <div class="about">
       <h3>Movies</h3>
       <br>
       <br>
       <h5>Light! Camera! Data! is a data visualization project based on</h5>
     </div>
+    </div>
     <div class="col-md-4">
-        {% for item in inventory[42:84]  %}
+        {% for item in inventory[72:144]  %}
           
             <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
           
@@ -63,6 +65,8 @@
   </div>
   
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
 </body>
 
