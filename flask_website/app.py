@@ -45,7 +45,7 @@ def word_cloud():
     # write a statement that finds all the items in the db and sets it to a variable
     inventory = list(mongo.db.movie_detail.find())
 
-    # render an index.html template and pass it the data you retrieved from the database
+    # render an word_cloud.html template and pass it the data you retrieved from the database
     return render_template("word_cloud.html", inventory=inventory)
 
 @app.route('/sankey')
@@ -55,6 +55,14 @@ def sankey():
 
     # render an index.html template and pass it the data you retrieved from the database
     return render_template("sankey.html", inventory=inventory)
+
+@app.route('/treemap')
+def treemap():
+    # write a statement that finds all the items in the db and sets it to a variable
+    inventory = list(mongo.db.movie_detail.find())
+
+    # render an treemap.html template and pass it the data you retrieved from the database
+    return render_template("treemap.html", inventory=inventory)
 
 
 if __name__ == "__main__":
