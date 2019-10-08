@@ -38,13 +38,13 @@
     <div class="col-md-4">
       {% for item in inventory[0:72] %}
         
-          <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
+          <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
         
       {% endfor %}
     </div>
     <div class="col-md-4">
       <div class="quote">
-      <h2>"Everything I learned I learned from movies"  -Audrey Hepburn</h3>
+      <h2>"Everything I learned I learned from movies"  <br>-Audrey Hepburn</h3>
       <br>
       <br>
     </div>
@@ -68,7 +68,7 @@
     <div class="col-md-4">
         {% for item in inventory[72:144]  %}
           
-            <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
+            <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
           
         {% endfor %}
       </div>
