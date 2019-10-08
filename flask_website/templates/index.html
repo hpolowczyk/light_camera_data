@@ -69,6 +69,14 @@
         {% for item in inventory[72:144]  %}
           
             <img src="{{ item.Poster }}" class="img-thumbnail" alt="posters">
+
+            <!--<script>
+              var reference = document.querySelector('.img-thumbnail')
+              new Tooltip(reference, {
+                placement: 'top', // or bottom, left, right, and variations
+                title: "Top"
+                });
+            </script>-->
           
         {% endfor %}
       </div>
@@ -89,6 +97,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
+  <!--<script src="https://unpkg.com/popper.js@^1"></script>
+  <script src="https://unpkg.com/tooltip.js@^1"></script>-->
 </body>
 
 </html>
