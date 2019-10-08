@@ -34,11 +34,21 @@ def init():
     return render_template("index.html")
 
 
+@app.route("/filterLessRange_IG_Rank/<value>")
+def filterRankRange(value):
+    value = int(value)
+    docs = []
+    for doc in mongo.db.international_gross_det.find({'rank': {'$lte': value}}):
+        doc.pop('_id')
+        docs.append(doc)
+    return jsonify(docs)
+
+
 @app.route("/filterLessEq_IG_Rank/<value>")
 def filterRank(value):
     value = int(value)
     docs = []
-    for doc in mongo.db.international_gross_det.find({'rank': {'$lte': value}}):
+    for doc in mongo.db.international_gross_det.find({'rank': value}):
         doc.pop('_id')
         docs.append(doc)
     return jsonify(docs)

@@ -1,32 +1,57 @@
 // Declare the data variable
-d3.selectAll("#selDataset").on("change", populateList);
+d3.selectAll("#selDataset").on("change", getValue);
+d3.selectAll("#selList").on("change", searchValue);
 
-var valueSelect = d3.select("#selDataset").node().value;
-var data = "/filterLessEq_IG_Rank/" + valueSelect;
-// Using d3, fetch the JSON data
-d3.json(data).then(data => {
-  console.log(data);
-  populateList(data);
-  showMap(data);
-});
+var myMap;
+
+function getValue() {
+  var valueSelect = d3.select("#selDataset").node().value;
+  var data = "/filterLessRange_IG_Rank/" + valueSelect;
+  // Using d3, fetch the JSON data
+  d3.json(data).then(data => {
+    // console.log(data);
+    populateList(data);
+  });
+}
+
+function searchValue() {
+  var valueSelect = d3.select("#selList").node().value;
+  getMovie(valueSelect);
+}
 
 function populateList(data) {
+  var selectOpt = d3.select("#selList");
+  selectOpt.html("");
   for (var i = 0; i < data.length; i++) {
     var selectValues = data[i].movie_name;
-
-    var selectOpt = d3.select("#selList");
     selectOpt
       .append("option")
-      .text(selectValues)
+      .text("Rank: " + data[i].rank + " - " + selectValues)
       .attr("value", function() {
-        return selectValues;
+        return data[i].rank;
       });
   }
 }
 
+function getMovie(rank) {
+  var dataMongo = "/filterLessEq_IG_Rank/" + rank;
+  d3.json(dataMongo).then(dataMongo => {
+    // console.log(data);
+    showMap(dataMongo);
+  });
+}
+
+function RemoveExistingMap(myMap) {
+  if (myMap != null) {
+    myMap.remove();
+    myMap = null;
+  }
+}
+
 function showMap(data) {
+  RemoveExistingMap(myMap);
   // Create a map object
-  var myMap = L.map("map", {
+  myMap = L.map("map", {
     center: [15.5994, -28.6731],
     zoom: 3
   });
@@ -60,6 +85,14 @@ function showMap(data) {
       var longitude = data[i].Foreign[j].longitude;
       var population = data[i].Foreign[j].population;
       var language = data[i].Foreign[j].language;
+
+      if (city == "South Korea") {
+        latitude = 35.9;
+        longitude = 127.76;
+      } else if (city == "India") {
+        latitude = 20.59;
+        longitude = 78.96;
+      }
 
       // Check for location property
       if (location) {
