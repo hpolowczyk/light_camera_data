@@ -11,11 +11,11 @@ d3.json(filePath,data =>{
     //Since each movie's genre is an array of multiple actual genres, merge the arrays into one
     var mergedGenres = genres.join(",").split(",");
 
+
    //Split the array into objects to be grouped by count of each genre
     var splitObjects = mergedGenres.map(genre => ({'genre': genre, 'count' : 1}));
 
-
-    //Grouping
+    //Group by count of each genre
     var groupedGenres = [];//array to store grouped genres
 
     splitObjects.reduce(function(res, value) {
