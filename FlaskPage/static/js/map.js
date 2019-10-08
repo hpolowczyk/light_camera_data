@@ -53,7 +53,7 @@ function showMap(data) {
   // Create a map object
   myMap = L.map("map", {
     center: [15.5994, -28.6731],
-    zoom: 3
+    zoom: 2
   });
 
   L.tileLayer(
@@ -62,7 +62,7 @@ function showMap(data) {
       attribution:
         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      id: "mapbox.streets-basic",
+      id: "mapbox.light",
       accessToken: API_KEY
     }
   ).addTo(myMap);
@@ -71,6 +71,10 @@ function showMap(data) {
     // get the first 10 countries
     var count = 0;
     var totalForeign = data[i].foreign_total_gross;
+
+    d3.selectAll("#valueInt").text(
+      "Total Amount Foreing: $" + data[i].foreign_total_gross
+    );
 
     for (var j = 0; j < data[i].Foreign.length; j++) {
       var city = data[i].Foreign[j].country;
