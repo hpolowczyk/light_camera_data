@@ -27,6 +27,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <li><a href="movie_ring"> Movie Ring </a></li>
+              <li><a href="bubble"> Exploding Bubbles </a></li>
               <li><a href="word_cloud"> Word Cloud </a></li>
               <li><a href="sankey"> Sankey </a></li>
               <li><a href="json"> Data </a></li>
@@ -38,7 +39,7 @@
     <div class="col-md-4">
       {% for item in inventory[0:72] %}
         
-          <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
+          <img src="{{ item.Poster }}" class="img-thumbnail" alt="posters">
         
       {% endfor %}
     </div>
@@ -51,15 +52,15 @@
       <div class="about">
       <h4>Lights! Camera! Data! is a data visualization project based on 250 of the highest grossing movies of all time according to the amount they grossed over their opening weekend.</h4> 
         <br>
-        <h4>It explores the relationships between films, actors and studios using a chord diagram. It investigates foreign gross box office success via map. </h4>
-        <h4>It explores the relationships between films, actors and studios using a chord diagram. It investigates foreign gross box office success via map. </h4>
+        <h4>It delves into the connections between films, actors and the rating system using a chord diagram. It investigates foreign gross box office success via map. </h4>
+        <h4>It explores the total gross earnings per studio, broken down by movie, through an exploding bubble chart. It showcases genre themes and uses size to display financial success. </h4>
         <br>
         <br>
         <br>
         <h4>Data was sourced from Box Office Mojo and the OMDb API. It was then transformed using Python and loaded into MongoDB. The visualization is powered by Python Flask.</h4>
         <br>
         
-        <h4>Visuals were made using d3.js, dex.js and leaflet.js.</h4>
+        <h4>Visuals were made using d3.js, dex.js, google charts, anycharts.js and leaflet.js.</h4>
         <br>
         <h4>Created by Amanda Green, Hanna Polowczyk, Manoel Burgos, and Sofiat Ishola.</h4>
     </div>
@@ -67,7 +68,7 @@
     <div class="col-md-4">
         {% for item in inventory[72:144]  %}
           
-            <img src="{{ item.Poster }}" class="img-thumbnail" alt="Cinque Terre">
+            <img src="{{ item.Poster }}" class="img-thumbnail" alt="posters">
           
         {% endfor %}
       </div>

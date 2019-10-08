@@ -31,6 +31,15 @@ def index():
     # render an index.html template and pass it the data you retrieved from the database
     return render_template("index.html", inventory=inventory)
 
+@app.route('/bubble')
+def bubble():
+    # write a statement that finds all the items in the db and sets it to a variable
+    inventory = list(mongo.db.movie_detail.find())
+
+    # render an index.html template and pass it the data you retrieved from the database
+    return render_template("bubble.html", inventory=inventory)
+
+
 @app.route('/word_cloud')
 def word_cloud():
     # write a statement that finds all the items in the db and sets it to a variable

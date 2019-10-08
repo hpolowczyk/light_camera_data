@@ -25,7 +25,7 @@ function buildCSV(start, end, data) {
         var actors = movie.Actors;
         // var genres = movie.Genre;
         actors.forEach((actor) => {
-            var movieList = [movie.Title, movie.Studio];
+            var movieList = [movie.Title, movie.Rated];
             movieList.push(actor);
             movieData.push(movieList);
         })
@@ -33,7 +33,7 @@ function buildCSV(start, end, data) {
     //console.log(movieData);
     // From JSON
     var json = {
-        'header': ['Movies', 'Studio', 'Actor'],
+        'header': ['Movies', 'Rating', 'Actor'],
         'data': movieData
     };
     var csv = new dex.csv(json);
