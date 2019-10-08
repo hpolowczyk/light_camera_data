@@ -24,7 +24,7 @@ mongo = PyMongo(
 
 @app.route("/internatianalGross")
 def internatianalGross():
-    listings = mongo.db.international_gross.find_one()
+    listings = mongo.db.international_gross_det.find_one()
     result = json.loads(json_util.dumps(listings))
     return jsonify(result)
 
@@ -38,7 +38,7 @@ def init():
 def filterRank(value):
     value = int(value)
     docs = []
-    for doc in mongo.db.international_gross.find({'rank': {'$lte': value}}):
+    for doc in mongo.db.international_gross_det.find({'rank': {'$lte': value}}):
         doc.pop('_id')
         docs.append(doc)
     return jsonify(docs)
@@ -48,7 +48,7 @@ def filterRank(value):
 def filterDomesticGross(value):
     value = int(value)
     docs = []
-    for doc in mongo.db.international_gross.find({'domestic_total_gross': {'$lte': value}}):
+    for doc in mongo.db.international_gross_det.find({'domestic_total_gross': {'$lte': value}}):
         doc.pop('_id')
         docs.append(doc)
     return jsonify(docs)
@@ -58,7 +58,7 @@ def filterDomesticGross(value):
 def filterForeingGross(value):
     value = int(value)
     docs = []
-    for doc in mongo.db.international_gross.find({'foreign_total_gross': {'$lte': value}}):
+    for doc in mongo.db.international_gross_det.find({'foreign_total_gross': {'$lte': value}}):
         doc.pop('_id')
         docs.append(doc)
     return jsonify(docs)

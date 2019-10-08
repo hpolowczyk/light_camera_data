@@ -29,7 +29,7 @@ def index():
     inventory = list(mongo.db.movie_detail.find())
 
     # render an index.html template and pass it the data you retrieved from the database
-    return render_template("about.html", inventory=inventory)
+    return render_template("index.html", inventory=inventory)
 
 @app.route('/word_cloud')
 def word_cloud():
