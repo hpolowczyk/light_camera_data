@@ -1,24 +1,28 @@
 // Declare the data variable
-const data = "/filterLessEq_IG_Rank/1";
-const data2 = "/filterLessEq_IG_Dom/500000000";
-const data3 = "/filterLessEq_IG_Int/500000000";
+d3.selectAll("#selDataset").on("change", populateList);
 
+var valueSelect = d3.select("#selDataset").node().value;
+var data = "/filterLessEq_IG_Rank/" + valueSelect;
 // Using d3, fetch the JSON data
 d3.json(data).then(data => {
   console.log(data);
+  populateList(data);
   showMap(data);
 });
 
-// Using d3, fetch the JSON data
-d3.json(data2).then(data2 => {
-  console.log(data2);
-});
+function populateList(data) {
+  for (var i = 0; i < data.length; i++) {
+    var selectValues = data[i].movie_name;
 
-d3.json(data3).then(data3 => {
-  console.log(data3);
-});
-
-function tableList(data) {}
+    var selectOpt = d3.select("#selList");
+    selectOpt
+      .append("option")
+      .text(selectValues)
+      .attr("value", function() {
+        return selectValues;
+      });
+  }
+}
 
 function showMap(data) {
   // Create a map object
@@ -38,72 +42,53 @@ function showMap(data) {
     }
   ).addTo(myMap);
 
-  var countryApi = "https://restcountries.eu/rest/v2/name/" + "Argentina";
-
-  d3.json(countryApi, function(response) {
-    console.log(response);
-  });
   for (var i = 0; i < data.length; i++) {
     // get the first 10 countries
     var count = 0;
-    var totalForeign = data[0].foreign_total_gross;
-    for (var j = 0; j < data[i].Foreign.length; i++) {
+    var totalForeign = data[i].foreign_total_gross;
+
+    for (var j = 0; j < data[i].Foreign.length; j++) {
       var city = data[i].Foreign[j].country;
       var localTotal = data[i].Foreign[j].total_gross;
-      var percent = (localTotal / localTotal) * 100;
-      var countryApi = "https://restcountries.eu/rest/v2/name/" + city;
+      var percent = (localTotal / totalForeign) * 100;
 
-      d3.json(countryApi, function(response) {
-        // Create a new marker cluster group
-        var markers = L.markerClusterGroup();
+      // Create a new marker cluster group
+      var markers = L.markerClusterGroup();
 
-        // Set the data location property to a variable
-        var location = response[0].latlng;
-        var population = response[0].population;
+      // Set the data location property to a variable
+      var latitude = data[i].Foreign[j].latitude;
+      var longitude = data[i].Foreign[j].longitude;
+      var population = data[i].Foreign[j].population;
+      var language = data[i].Foreign[j].language;
 
-        // Check for location property
-        if (location) {
-          // Add a new marker to the cluster group and bind a pop-up
-          markers.addLayer(
-            L.marker([location[1], location[0]]).bindPopup(
-              "<h1>" + city + "</h1> <hr> <h3> Percent: " + percent + "%"
-            )
-          );
-        }
+      // Check for location property
+      if (location) {
+        // Add a new marker to the cluster group and bind a pop-up
+        markers.addLayer(
+          L.marker([latitude, longitude]).bindPopup(
+            "<table>" +
+              "<tr><td>" +
+              "<img src=" +
+              data[i].img_movie +
+              "width='100' height='110'></td>" +
+              "<td> <h3>City: " +
+              city +
+              "</h3><h4>Language: " +
+              language +
+              "<p>Toal value: " +
+              localTotal +
+              "<p>Global percent: " +
+              percent.toString().substring(0, 4) +
+              "%" +
+              "<p>Population: " +
+              population +
+              "</h4></td></table>"
+          )
+        );
+      }
 
-        // Add our marker cluster layer to the map
-        myMap.addLayer(markers);
-      });
+      // Add our marker cluster layer to the map
+      myMap.addLayer(markers);
     }
   }
-  // for (var i = 0; i < countries.length; i++) {
-  //   // Conditionals for countries points
-  //   var color = "";
-  //   if (countries[i].points > 200) {
-  //     color = "yellow";
-  //   } else if (countries[i].points > 100) {
-  //     color = "blue";
-  //   } else if (countries[i].points > 90) {
-  //     color = "green";
-  //   } else {
-  //     color = "red";
-  //   }
-
-  //   // Add circles to map
-  //   L.circle(countries[i].location, {
-  //     fillOpacity: 0.75,
-  //     color: "white",
-  //     fillColor: color,
-  //     // Adjust radius
-  //     radius: countries[i].points * 1500
-  //   })
-  //     .bindPopup(
-  //       "<h1>" +
-  //         countries[i].name +
-  //         "</h1> <hr> <h3>Points: " +
-  //         countries[i].points +
-  //         "</h3>"
-  //     )
-  //     .addTo(myMap);
-  // }
 }

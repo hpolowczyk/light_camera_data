@@ -19,11 +19,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/leaflet.markercluster@1.0.3/dist/leaflet.markercluster.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://unpkg.com/leaflet.markercluster@1.0.3/dist/MarkerCluster.Default.css"
+    />
   </head>
 
   <body>
     <!-- The div where we will inject our map -->
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="well">
+            Choose your TOP movies:
+            <select id="selDataset">
+              <option value="10">Top 10</option>
+              <option value="50">Top 50</option>
+              <option value="100">Top 100</option> </select
+            ><br /><br />
+          </div>
+          <div>
+            <select id="selList"></select>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div id="map"></div>
+
+    <!-- <div id="map"></div> -->
 
     <!-- API key -->
     <script type="text/javascript" src="/static/js/my_key.js"></script>
