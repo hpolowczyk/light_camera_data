@@ -7,7 +7,10 @@
   <title>Movie Ring of Knowledge</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-  <link rel="stylesheet" href="static/css/style.css">
+  <link rel="stylesheet" href="static/css/style.css">  
+
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-base.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/v8/js/anychart-tag-cloud.min.js"></script>
 </head>
 
 <body>
@@ -31,7 +34,7 @@
       </div>
     </nav>
       <div class="windowBox" id="filter">
-        <h3><b>Customize Top Movie Range</b></h3>
+        <!-- <h3><b>Customize Top Movie Range</b></h3>
           <form class="form-inline">
             <div class="form-group">
               <label for="start">Start:</label>
@@ -42,10 +45,10 @@
               <input type="number" class="end" id="end" placeholder="250">
             </div>
             <button id="filter-btn" type="button" class="btn btn-default">Go!</button>
-          </form>
-      </div>
-      <div id="D3Plus_RingNetwork"></div>
+          </form> -->
+      <div id="WordCloud_Container" style="width: 900px; height: 600px;></div>
 
+      </div>
 
       <footer class="footer">
           <span class="bottom">Data Visualization Project</span>
@@ -65,6 +68,10 @@
     <script src="https://dexjs.net/js/dex.js"></script>
     <script>d3 = dex.charts.d3.d3v3;</script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3plus/1.9.8/d3plus.min.js"></script>
+
+    
+     
+    <script src="./static/js/wordcloud.js"></script>
     
 
 </body>
