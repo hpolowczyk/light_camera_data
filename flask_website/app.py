@@ -8,6 +8,14 @@ app = Flask(__name__)
 mongo = PyMongo(
     app, uri="mongodb+srv://generaluser:generaluser123@project2-ha8my.mongodb.net/movie_db?retryWrites=true&w=majority")
 
+@app.route('/')
+def index():
+    # write a statement that finds all the items in the db and sets it to a variable
+    inventory = list(mongo.db.movie_detail.find())
+
+    # render an index.html template and pass it the data you retrieved from the database
+    return render_template("index.html", inventory=inventory)
+
 
 @app.route('/json')
 def jsonified():
@@ -25,16 +33,6 @@ def movie_ring():
 
     # render an index.html template and pass it the data you retrieved from the database
     return render_template("movie_ring.html", inventory=inventory)
-
-
-@app.route('/')
-def index():
-    # write a statement that finds all the items in the db and sets it to a variable
-    inventory = list(mongo.db.movie_detail.find())
-
-    # render an index.html template and pass it the data you retrieved from the database
-    return render_template("index.html", inventory=inventory)
-
 
 @app.route('/bubble')
 def bubble():

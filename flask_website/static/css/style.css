@@ -77,6 +77,13 @@ input#end {
   background-color: #ffffff;
 }
 
+.wrapper1 {
+  position: relative;
+  overflow: auto;
+  background-color: #ffffff;
+}
+
+
 /* The footer is positioned at the bottom of the page */
 .footer {
   position: absolute;
