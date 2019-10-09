@@ -3,7 +3,17 @@
   font-family: Ubuntu, sans-serif;
 }
 
-#map,
+#map {
+  position: relative;
+  height: inherit;
+  width: inherit;
+}
+
+/* #map-container {
+  position: relative;
+  height: 180px;
+  width: 600px;
+} */
 html,
 body {
   height: 100%;

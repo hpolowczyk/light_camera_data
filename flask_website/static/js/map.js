@@ -1,12 +1,15 @@
-// Declare the data variable
+// Declare global variable
+var myMap;
+//listen the event
 d3.selectAll("#selDataset").on("change", getValue);
 d3.selectAll("#selList").on("change", searchValue);
 
-var myMap;
-
+//call flask api based on the top movies
 function getValue() {
   var valueSelect = d3.select("#selDataset").node().value;
   var data = "/filterLessRange_IG_Rank/" + valueSelect;
+  d3.selectAll("#valueInt").html("");
+  d3.selectAll("#valueNorth").html("");
   // Using d3, fetch the JSON data
   d3.json(data).then(data => {
     // console.log(data);
@@ -14,11 +17,13 @@ function getValue() {
   });
 }
 
+//select the list of movies that were populated dynamically
 function searchValue() {
   var valueSelect = d3.select("#selList").node().value;
   getMovie(valueSelect);
 }
 
+//populated list dynamically based on the top movies
 function populateList(data) {
   var selectOpt = d3.select("#selList");
   selectOpt.html("");
@@ -33,6 +38,7 @@ function populateList(data) {
   }
 }
 
+//pass the rank to flask API to return the json content
 function getMovie(rank) {
   var dataMongo = "/filterLessEq_IG_Rank/" + rank;
   d3.json(dataMongo).then(dataMongo => {
@@ -41,6 +47,7 @@ function getMovie(rank) {
   });
 }
 
+//clear the map from the webpage
 function RemoveExistingMap(myMap) {
   if (myMap != null) {
     myMap.remove();
@@ -48,12 +55,13 @@ function RemoveExistingMap(myMap) {
   }
 }
 
+// show map and markers
 function showMap(data) {
   RemoveExistingMap(myMap);
   // Create a map object
   myMap = L.map("map", {
     center: [15.5994, -28.6731],
-    zoom: 2
+    zoom: 3
   });
 
   L.tileLayer(
@@ -62,7 +70,7 @@ function showMap(data) {
       attribution:
         'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       maxZoom: 18,
-      id: "mapbox.light",
+      id: "mapbox.streets",
       accessToken: API_KEY
     }
   ).addTo(myMap);
@@ -71,15 +79,24 @@ function showMap(data) {
     // get the first 10 countries
     var count = 0;
     var totalForeign = data[i].foreign_total_gross;
-
+    var font;
     d3.selectAll("#valueInt").text(
-      "International total amount: $" + data[i].foreign_total_gross
+      "International: " + numeral(data[i].foreign_total_gross).format("$0,0")
+    );
+    d3.selectAll("#valueNorth").text(
+      "North America: " + numeral(data[i].domestic_total_gross).format("$0,0")
     );
 
     for (var j = 0; j < data[i].Foreign.length; j++) {
       var city = data[i].Foreign[j].country;
       var localTotal = data[i].Foreign[j].total_gross;
       var percent = (localTotal / totalForeign) * 100;
+
+      if (percent < 1) {
+        font = "red";
+      } else {
+        font = "blue";
+      }
 
       // Create a new marker cluster group
       var markers = L.markerClusterGroup();
@@ -96,6 +113,7 @@ function showMap(data) {
       } else if (city == "India") {
         latitude = 20.59;
         longitude = 78.96;
+        population = 1339000000;
       }
 
       // Check for location property
@@ -107,18 +125,20 @@ function showMap(data) {
               "<tr><td>" +
               "<img src=" +
               data[i].img_movie +
-              "width='100' height='110'></td>" +
-              "<td> <h3>City: " +
+              "width='110' height='120'></td>" +
+              "<td> <font color = " +
+              font +
+              "><h3>City: " +
               city +
-              "</h3><h4>Language: " +
+              "</h3></font><h4>Language: " +
               language +
-              "<p>Toal value: " +
-              localTotal +
-              "<p>Global percent: " +
+              "<p>Total: " +
+              numeral(localTotal).format("$0,0") +
+              "<p>Global: " +
               percent.toString().substring(0, 4) +
               "%" +
               "<p>Population: " +
-              population +
+              numeral(population).format("0,0") +
               "</h4></td></table>"
           )
         );
