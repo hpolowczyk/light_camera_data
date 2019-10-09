@@ -128,7 +128,7 @@ function showMap(data) {
               "width='110' height='120'></td>" +
               "<td> <font color = " +
               font +
-              "><h3>City: " +
+              "><h3>Country: " +
               city +
               "</h3></font><h4>Language: " +
               language +

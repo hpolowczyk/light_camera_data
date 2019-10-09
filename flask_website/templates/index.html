@@ -38,9 +38,9 @@
     </nav>
     <div class="row">
     <div class="col-md-4">
-      {% for item in inventory[0:72] %}
-        
-          <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
+      {% for movie in movies[0:72] %}
+
+          <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}">
         
       {% endfor %}
     </div>
@@ -58,8 +58,8 @@
         <br>
         <h4>Visuals that should help along the way include:</h4>
         <li>A ring diagram that delves into the relationships between films, actors and the movie ratings systems </li>
+        <li>A word cloud that takes a look into the role of genre when it comes to financial success and its frequency</li>
         <li>A packed bubble chart that explores how total gross earnings is broken down on a studio level, and then further on a per movie basis</li>
-        <li>A word cloud that takes a look into the role of genre when it comes to success and its frequency</li>
         <li>A world map that investigates foreign gross box office</li>
         <br>
         <br>
@@ -71,9 +71,9 @@
     </div>
     </div>
     <div class="col-md-4">
-        {% for item in inventory[72:144]  %}
+        {% for movie in movies[72:144]  %}
           
-            <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
+            <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}">
           
         {% endfor %}
       </div>
@@ -90,12 +90,9 @@
 
   </div>
   
-
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
-  <!--<script src="https://unpkg.com/popper.js@^1"></script>
-  <script src="https://unpkg.com/tooltip.js@^1"></script>-->
 </body>
 
 </html>
