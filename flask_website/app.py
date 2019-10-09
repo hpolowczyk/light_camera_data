@@ -31,46 +31,26 @@ def jsonified():
 
 @app.route('/movie_ring')
 def movie_ring():
-    # write a statement that finds all the items in the db and sets it to a variable
-    movies = list(mongo.db.movie_detail.find())
-
-    # render an index.html template and pass it the data you retrieved from the database
-    return render_template("movie_ring.html", movies=movies)
+    return render_template("movie_ring.html")
 
 @app.route('/bubble')
 def bubble():
-    # write a statement that finds all the items in the db and sets it to a variable
-    movies = list(mongo.db.movie_detail.find())
-
-    # render an index.html template and pass it the data you retrieved from the database
-    return render_template("bubble.html", movies=movies)
+    return render_template("bubble.html")
 
 
 @app.route('/word_cloud')
 def word_cloud():
-    # write a statement that finds all the items in the db and sets it to a variable
-    movies = list(mongo.db.movie_detail.find())
-
-    # render an word_cloud.html template and pass it the data you retrieved from the database
-    return render_template("word_cloud.html", movies=movies)
+    return render_template("word_cloud.html")
 
 
 @app.route('/sankey')
 def sankey():
-    # write a statement that finds all the items in the db and sets it to a variable
-    movies = list(mongo.db.movie_detail.find())
-
-    # render an index.html template and pass it the data you retrieved from the database
-    return render_template("sankey.html", movies=movies)
+    return render_template("sankey.html")
 
 
 @app.route('/treemap')
 def treemap():
-    # write a statement that finds all the items in the db and sets it to a variable
-    movies = list(mongo.db.movie_detail.find())
-
-    # render an treemap.html template and pass it the data you retrieved from the database
-    return render_template("treemap.html", movies=movies)
+    return render_template("treemap.html")
 
 
 @app.route("/map")
