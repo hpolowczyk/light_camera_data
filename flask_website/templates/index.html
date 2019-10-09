@@ -40,7 +40,7 @@
     <div class="col-md-4">
       {% for movie in movies[0:72] %}
 
-          <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}">
+          <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }}">
         
       {% endfor %}
     </div>
@@ -73,7 +73,7 @@
     <div class="col-md-4">
         {% for movie in movies[72:144]  %}
           
-            <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}">
+            <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }}">
           
         {% endfor %}
       </div>
