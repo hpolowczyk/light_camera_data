@@ -40,7 +40,7 @@
     <div class="col-md-4">
       {% for movie in movies[0:72] %}
 
-          <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }}">
+          <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }} | {{ movie.Plot }}">
         
       {% endfor %}
     </div>
@@ -59,7 +59,7 @@
         <h4>Visuals that should help along the way include:</h4>
         <li>A ring diagram that delves into the relationships between films, actors and the movie ratings systems </li>
         <li>A word cloud that takes a look into the role of genre when it comes to financial success and its frequency</li>
-        <li>A packed bubble chart that explores how total gross earnings is broken down on a studio level, and then further on a per movie basis</li>
+        <li>A packed bubble chart and a tree map that explore how total gross earnings is broken down on a studio level, and then further on a per movie basis</li>
         <li>A world map that investigates foreign gross box office</li>
         <br>
         <br>
@@ -73,7 +73,7 @@
     <div class="col-md-4">
         {% for movie in movies[72:144]  %}
           
-            <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }}">
+            <img src="{{ movie.Poster }}" class="img-thumbnail" alt="{{ movie.Title }}" title="{{ movie.Title }} | {{ movie.Plot }}">
           
         {% endfor %}
       </div>
