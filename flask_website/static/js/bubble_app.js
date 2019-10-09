@@ -4,24 +4,18 @@ const bubbledata = '/json';
 
 // Using d3, fetch the JSON data
 d3.json(bubbledata).then((bubbledata) => {
-  // console.log(bubbledata)
-
   bubbledata.sort((a, b) => (a.Studio > b.Studio) * 2 - 1)
-  // console.log(bubbledata)
 
   // CREATE LISTOF ALL STUDIOS
-
 
   var Bubblelist = []
   for (var i = 0; i < bubbledata.length; i++) {
     var Studio = bubbledata[i]["Studio"];
-    // console.log(Studio);
     Bubblelist.push(Studio);
-    // var data = bubbledata[i]['Studio'];
   }
-  // console.log(Bubblelist);
+
   var studios = new Set(Bubblelist);
-  // console.log(studios);
+
   // Loop through studio to find movies & gross
 
   var studiodata = [];
@@ -43,7 +37,7 @@ d3.json(bubbledata).then((bubbledata) => {
       "children": currentStudios
     });
   }
-  // console.log(finalBubbleData);
+
 
   // <!-- Chart code -->
   am4core.ready(function () {
@@ -53,9 +47,7 @@ d3.json(bubbledata).then((bubbledata) => {
     // Themes end
 
     var chart = am4core.create("chartdiv", am4plugins_forceDirected.ForceDirectedTree);
-
     var networkSeries = chart.series.push(new am4plugins_forceDirected.ForceDirectedSeries())
-    console.log(finalBubbleData);
     networkSeries.data = finalBubbleData;
 
     networkSeries.dataFields.linkWith = "linkWith";

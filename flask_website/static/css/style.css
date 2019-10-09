@@ -3,57 +3,64 @@
   font-family: Ubuntu, sans-serif;
 }
 
+#map {
+  position: relative;
+  height: inherit;
+  width: inherit;
+}
+
+/* #map-container {
+  position: relative;
+  height: 180px;
+  width: 600px;
+} */
 html,
 body {
   height: 100%;
   padding: 0;
   margin: 0;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 .thumbnail {
   background-color: #ffffff;
-  height:50px;
-  width:auto;
+  height: 50px;
+  width: auto;
 }
 
 .img-thumbnail {
   background-color: #ffffff;
-  height:110px;
-  width:calc(96%/6)
+  height: 110px;
+  width: calc(96% / 6);
 }
 
-.quote{
-  color:#710117;
+.quote {
+  color: #710117;
   text-align: center;
-
 }
 
-.about{
-  color:#710117
+.about {
+  color: #710117;
 }
 
-
-.windowBox{
+.windowBox {
   margin: auto;
   padding: 10px;
-  color:#710117;
-  font-size:18px
+  color: #710117;
+  font-size: 18px;
 }
 
-input#start{
+input#start {
   width: 50px;
   height: auto;
-  color: #710117
+  color: #710117;
 }
 
-input#end{
+input#end {
   width: 50px;
   height: auto;
-  color:#710117
+  color: #710117;
 }
-
-
 
 #about {
   margin: auto;
@@ -67,8 +74,15 @@ input#end{
   min-height: 100%;
   padding-bottom: 35px;
   overflow: auto;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
+
+.wrapper1 {
+  position: relative;
+  overflow: auto;
+  background-color: #ffffff;
+}
+
 
 /* The footer is positioned at the bottom of the page */
 .footer {
@@ -77,9 +91,9 @@ input#end{
   bottom: 0;
   left: 0;
   min-height: 20px;
-  background: #F7E7CE;
-  color:#710117;
-  font-size:16px
+  background: #f7e7ce;
+  color: #710117;
+  font-size: 16px;
 }
 
 /* The code styles the text at the bottom of the footer */
@@ -89,24 +103,23 @@ input#end{
   bottom: 0;
   left: 0;
   padding: 5px;
-  background: #F7E7CE;
+  background: #f7e7ce;
 }
 
 .navbar {
   padding: 5px;
   margin: 0;
   color: #710117;
-  background-color: #F7E7CE
+  background-color: #f7e7ce;
 }
 
-.navbar-default .navbar-brand  {
+.navbar-default .navbar-brand {
   padding: 5px;
   margin: 0;
   color: #710117;
-  background-color: #F7E7CE;
-  font-size: 22px
+  background-color: #f7e7ce;
+  font-size: 22px;
 }
-
 
 /* This CSS styles the camera icon in the navbar */
 .nav-camera {
@@ -116,11 +129,10 @@ input#end{
   width: 40px;
 }
 
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav > li > a {
   color: #710117;
-  font-size:16px
+  font-size: 16px;
 }
-
 
 .filters .panel-body {
   padding: 0;
@@ -134,55 +146,48 @@ select {
   display: block;
   width: 100%;
   padding: 8px;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
-rect#d3plus_overlay{
-  fill:#ffffff;
-  opacity: 1
-}
-
-.d3plus_data{
+rect#d3plus_overlay {
+  fill: #ffffff;
   opacity: 1;
-  
 }
 
-.d3plus_label_bg{
+.d3plus_data {
   opacity: 1;
-  fill:#ffffff
 }
 
-#d3plus_back_button{
+.d3plus_label_bg {
+  opacity: 1;
+  fill: #ffffff;
+}
+
+#d3plus_back_button {
   opacity: 0;
   visibility: hidden;
 }
 
-.d3plus_label{
-  opacity: 1
-}
-
-.d3plus_tooltip_container{
-
-  margin-right:20px
-}
-
-
-
-
-rect#bg{
-  fill:#ffffff;
+.d3plus_label {
   opacity: 1;
 }
 
+.d3plus_tooltip_container {
+  margin-right: 20px;
+}
+
+rect#bg {
+  fill: #ffffff;
+  opacity: 1;
+}
 
 #D3Plus_RingNetwork {
-  fill: #ffffff
+  fill: #ffffff;
 }
 
 .loader {
   margin-top: 50px;
 }
-
 
 /* The styles for the parallax */
 .hero {
@@ -214,25 +219,25 @@ rect#bg{
 .form-control::-webkit-input-placeholder {
   /* Chrome/Opera/Safari */
   color: #782620;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 .form-control::-moz-placeholder {
   /* Firefox 19+ */
   color: #782620;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 .form-control:-ms-input-placeholder {
   /* IE 10+ */
   color: #782620;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 .form-control:-moz-placeholder {
   /* Firefox 18- */
   color: #782620;
-  background-color: #ffffff
+  background-color: #ffffff;
 }
 
 /* media queries which will only be activated at specific screen sizes */
@@ -251,7 +256,7 @@ rect#bg{
     font-size: 1.8em;
     font-weight: bold;
     background: #1b3146;
-    background-color: #ffffff
+    background-color: #ffffff;
   }
 
   #table-area tr td:last-child {
@@ -321,8 +326,6 @@ rect#bg{
     opacity: 1;
   }
 }
-
-
 
 #WordCloud_Container {
   width: 100%;
