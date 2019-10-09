@@ -38,7 +38,7 @@
     <div class="col-md-4">
       {% for item in inventory[0:72] %}
         
-          <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
+          <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}" title="{{ item.Title }}">
         
       {% endfor %}
     </div>
@@ -53,9 +53,9 @@
         <br>
         <h4>It explores the relationships between films, actors and studios using a chord diagram. It investigates foreign gross box office success via map. </h4>
         <br>
-        <h4>Word cloud... </h4>
+        <h4>Shows the Genre distribution through a Word cloud.</h4>
         <br>
-        <h4>Tree Map... </h4>
+        <h4>Explores the distribution of the movies among Studios using a Tree Map.</h4>
         <br>
         <h4>Data was sourced from Box Office Mojo and the OMDb API. It was then transformed using Python and loaded into MongoDB. The visualization is powered by Python Flask.</h4>
         <br>
@@ -68,7 +68,7 @@
     <div class="col-md-4">
         {% for item in inventory[72:144]  %}
           
-            <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}">
+          <img src="{{ item.Poster }}" class="img-thumbnail" alt="{{ item.Title }}" title="{{ item.Title }}">
           
         {% endfor %}
       </div>

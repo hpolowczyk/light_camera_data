@@ -35,7 +35,7 @@ def index():
 def word_cloud():
     # write a statement that finds all the items in the db and sets it to a variable
     inventory = list(mongo.db.movie_detail.find())
-
+    
     # render an word_cloud.html template and pass it the data you retrieved from the database
     return render_template("word_cloud.html", inventory=inventory)
 
